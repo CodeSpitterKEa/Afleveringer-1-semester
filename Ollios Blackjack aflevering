@@ -4,7 +4,14 @@ import java.util.Scanner;
 public class BlackJackGameV2 {
     public static void main(String[] args) {
         //intro
+
         System.out.println(" Velkommen til Olivers Blackjack spil... ");
+        System.out.println("");
+        System.out.println("            ##############");
+        System.out.println("            #            #");
+        System.out.println("            #    Enter   #");
+        System.out.println("            #            #");
+        System.out.println("            ##############");
 
         //Fremkalder objekter..
         Scanner scanner = new Scanner(System.in);
@@ -44,51 +51,49 @@ public class BlackJackGameV2 {
                 System.out.println("Dit kast er: " + roll);
                 System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-");
                 System.out.println("Vil du spille videre? y/n");
-                System.out.println("vil du checke hvor meget du har? : check");
+                System.out.println("vil du checke din score? skriv: check");
             }
+
+            //mine parameter for spil udfald
 
             if (no) {
                 System.out.println("Stopper spillet");
                 if (score == 21){
                     System.out.println("Blackjack!");
                 }
-                if (mScore >= score) {
+                if (mScore > score) {
                     System.out.println("Du har tabt");
                 }
-                if (mScore <= score) {
+                if (mScore < score) {
                     System.out.println("Du har vundet");
                 }
                 if (mScore == score) {
                     System.out.println("Uafgjordt!");
-                    //husk at skrive regler for maskinen
                 }
                 break;
             }
-
+            //Det her er koden til check score inputtet
             if (c) {
                 System.out.println("Dine kast: " + score);
                 System.out.println("-_-_-_-_-_-_-_-_-_-");
                 System.out.println("Maskinens kast: " + mScore);
             }
-            if (mScore >= 21) {
+            if (mScore > 21) {
                 System.out.println("Du har vundet");
                 break;
             }
             if (mScore == 21) {
                 System.out.println("Du har tabt");
             }
+            if (mScore == 21 && score == 21) {
+                System.out.println("Uafgjordt");
+            }
 
-            if (score >= 21){
+            if (score > 21){
                 System.out.println("Du har tabt");
                 break;
             }
-
-
-
-
-
         }
-
     }
 
 
@@ -96,10 +101,13 @@ public class BlackJackGameV2 {
 
     public static int dice() {
 
+        // mit randomizer objekt
         Random random = new Random();
 
+        // laver to dicethrows så den er mere randomized
         int diceOne = random.nextInt(1, 7);
         int diceTwo = random.nextInt(1, 7);
+
 
         return diceOne + diceTwo;
 
